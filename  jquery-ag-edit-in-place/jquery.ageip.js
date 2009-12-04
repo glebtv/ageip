@@ -57,6 +57,7 @@
                             return false;
                         }
                     });
+                    
                     if (options.onBlur == 'save'){
                         editor.blur(function(){
                             that.save();
@@ -132,7 +133,7 @@
                 ignoreText: 'click to edit',
                 textWidth: 30,
                 textHeight: 5,
-                saveOnBlur: true,
+                onBlur: 'save',
                 onsave: function(el){
                 },
                 oncancel: function(el){
