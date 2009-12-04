@@ -1,7 +1,7 @@
 /*!
  * jQuery plugin: ag-edit-in-place
- * Examples and documentation at: [no url yet]
- * version 0.3 (3-DEC-2009)
+ * Examples and documentation at: http://code.google.com/p/jquery-ag-edit-in-place/
+ * version 0.5 (3-DEC-2009)
  * Some ideas from SilverIPE by Jean-Nicolas Jolivet (http://www.silverscripting.com)
  * Released under the MIT License
  * http://www.opensource.org/licenses/mit-license.php
@@ -95,7 +95,7 @@
                     var value = that.editor.val();
                     if (value == ''){
                         that.editor.val(options.ignoreText);
-                        this.stopedit();
+                        return; that.stopedit();
                     }
                     if (value !== that.origContent)
                     {
