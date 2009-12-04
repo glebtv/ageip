@@ -1,7 +1,7 @@
 /*!
  * jQuery plugin: ag-edit-in-place
  * Examples and documentation at: [no url yet]
- * version 0.3 (3-DEC-2009)
+ * version 0.4 (5-DEC-2009)
  * Some ideas from SilverIPE by Jean-Nicolas Jolivet (http://www.silverscripting.com)
  * Released under the MIT License
  * http://www.opensource.org/licenses/mit-license.php
@@ -99,20 +99,21 @@
                         that.stopedit();
                         
                         options.additionalParameters[options.parameterName] = value;
-                        
-                        $.ajax({
-                            url    : url,
-                            type   : options.method,
-                            data   : options.additionalParameters,
-                            success : function(data){
-                                el.text(data);
-                                that.highlight(options.highlightColor);
-                            },
-                            error  : function (xhr){
-                                el.html('Error <b>' + xhr.status + ": " + xhr.statusText+'</b>');
-                                that.highlight('#FF8282');
-                            }
-                        });
+                        if (url != ''){
+                            $.ajax({
+                                url    : url,
+                                type   : options.method,
+                                data   : options.additionalParameters,
+                                success : function(data){
+                                    el.text(data);
+                                    that.highlight(options.highlightColor);
+                                },
+                                error  : function (xhr){
+                                    el.html('Error <b>' + xhr.status + ": " + xhr.statusText+'</b>');
+                                    that.highlight('#FF8282');
+                                }
+                            });
+                        }
                     }
                     else {
                         this.stopedit();
