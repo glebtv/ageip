@@ -34,10 +34,10 @@ $(function(){
         textWidth: 40,
         textHeight: 3,
         onBlur: 'save', // also can be cancel and none.
-        onsave: function(){
-            alert('saved');
+        onsave: function(el){
+            el.next('div').click();
         },
-        oncancel: function(){
+        oncancel: function(el){
         },
         additionalParameters: {} // additional request params: maybe, field id?
     });
@@ -53,10 +53,14 @@ $(function(){
         Lorem ipsum <span class="eip">Edit In Place Contents [inline editor]</span> &lt;--this editor is inline.
         <br/><br/>
         <div id="fail">Saving this will fail.</div>
-        <br/><br/>
+        <br/>
+        Progress to next editor once saved (custom callback example):
+        <br/>
         <div class="eip2">[multi block editor] - block 1</div>
         <div class="eip2">[multi block editor] - block 2</div>
         <div class="eip2">[multi block editor] - block 3</div>
     </div>
+    <br/><br/><br/><br/>
+    
 </body>
 </html>

@@ -1,7 +1,7 @@
 /*!
  * jQuery plugin: ag-edit-in-place
  * Examples and documentation at: [no url yet]
- * version 0.4 (5-DEC-2009)
+ * version 0.3 (3-DEC-2009)
  * Some ideas from SilverIPE by Jean-Nicolas Jolivet (http://www.silverscripting.com)
  * Released under the MIT License
  * http://www.opensource.org/licenses/mit-license.php
@@ -57,7 +57,6 @@
                             return false;
                         }
                     });
-                    
                     if (options.onBlur == 'save'){
                         editor.blur(function(){
                             that.save();
@@ -94,6 +93,10 @@
                 },
                 save : function () {
                     var value = that.editor.val();
+                    if (value == ''){
+                        that.editor.val(options.ignoreText);
+                        this.stopedit();
+                    }
                     if (value !== that.origContent)
                     {
                         el.html(options.savingText);
@@ -133,7 +136,7 @@
                 ignoreText: 'click to edit',
                 textWidth: 30,
                 textHeight: 5,
-                onBlur: 'save',
+                saveOnBlur: true,
                 onsave: function(el){
                 },
                 oncancel: function(el){
