@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-language" content="ru" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" href="demo.css" type="text/css" />
+<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  // Load jQuery
+  google.load("jquery", "1");
+</script>
+
+<script type="text/javascript" src="jquery.ageip.js"></script>
+
+<script type="text/javascript">
+$(function(){    
+    // Simple call
+    $('.eip').ageip('echo.php');
+    
+    // Error handling example
+    $('#fail').ageip('fail.php');
+    
+    // All availiable params
+    $('.eip2').ageip('echo.php', {
+        parameterName: 'value',
+        method: 'POST',
+        highlightColor: '#FF0000',
+        borderColor: '#DDD',
+        savingText: 'WAIT',
+        saveButtonLabel: 'custom save text',
+        cancelButtonLabel: 'custom cancel text',
+        ignoreText: '[multi block editor] - block 1', // This text will be considered as 'stub'
+        textWidth: 40,
+        textHeight: 3,
+        onBlur: 'save', // also can be cancel and none.
+        onsave: function(){
+            alert('saved');
+        },
+        oncancel: function(){
+        },
+        additionalParameters: {} // additional request params: maybe, field id?
+    });
+});
+</script>
+
+<title>AG EIP test page</title>
+</head>
+<body>
+    <div id="page">
+        <div class="eip">Edit In Place Contents [block editor]</div>
+        <br/><br/>
+        Lorem ipsum <span class="eip">Edit In Place Contents [inline editor]</span> &lt;--this editor is inline.
+        <br/><br/>
+        <div id="fail">Saving this will fail.</div>
+        <br/><br/>
+        <div class="eip2">[multi block editor] - block 1</div>
+        <div class="eip2">[multi block editor] - block 2</div>
+        <div class="eip2">[multi block editor] - block 3</div>
+    </div>
+</body>
+</html>

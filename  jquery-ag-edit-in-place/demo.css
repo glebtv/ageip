@@ -1,0 +1,12 @@
+*{
+margin: 0;
+padding: 0;
+}
+#page{
+width: 600px;
+margin: 0 auto;
+padding-top: 20px;
+}
+div{
+margin: 5px;
+}
